@@ -1,0 +1,92 @@
+.home-section .text {
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.section{
+    margin: 0px 18px;
+}
+
+main{
+    margin-top: 10px;
+    padding: 18px;
+}
+
+.info div div div:nth-child(2n){
+    font-size: 1.5rem;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.days div div:nth-child(1){
+    background-color: rgb(41, 41, 41);
+    color: white;
+    padding: 5px;
+    margin: 30px 0 5px 0;
+    border-radius: 5px;
+}
+
+.add{
+    padding: 0px !important;
+}
+
+.add input{
+    padding: 5px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    width: 90%;
+}
+
+.add button{
+    padding: 5px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: yellowgreen;
+    color: rgb(41, 41, 41);
+    width: 10%;
+}
+
+.add button:hover{
+    cursor: pointer;
+    background-color: rgb(139, 190, 35);
+    
+}
+
+
+.add div{
+    padding: 5px;
+    border: none;
+    border-radius: 5px ;
+    width: 100%;
+    margin-top: 5px;
+    background-color: rgb(255, 177, 146);
+    display:flex;
+}
+
+#del{
+    margin-left: auto;
+    border-radius: 5px;
+    background-color: rgb(255, 110, 110);
+    transition: .15s ease-out;
+}
+
+#del:hover{
+    cursor: pointer;
+    background-color: rgb(202, 44, 44);
+}
+
+
+#tue div{
+    background-color: rgb(255, 239, 146);
+}
+#wed div{
+    background-color: rgb(146, 233, 255);
+}
+#thr div{
+    background-color: rgb(236, 173, 255);
+}
+#fri div{
+    background-color: rgb(255, 146, 146);
+}

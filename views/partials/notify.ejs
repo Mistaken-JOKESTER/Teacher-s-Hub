@@ -1,0 +1,18 @@
+<% if(locals.success_msg && locals.success_msg.length > 0) { %>
+    <% success_msg.forEach(success => { %>
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div>
+            <%= success.msg %>
+        </div>
+    </div>
+    <% }) %>
+<% } %>
+<% if(locals.error_msg && locals.error_msg.length > 0) { %>
+    <% error_msg.forEach(error => { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div>
+            <%= error.msg %>
+        </div>
+    </div>
+    <% }) %>
+<% } %>

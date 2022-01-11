@@ -1,0 +1,76 @@
+<div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bxl-trip-advisor icon'></i>
+        <div class="logo_name">Techer Hub</div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+        <!-- <li>
+            <a href="#">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
+        </li> -->
+        <li>
+            <a href="/classes">
+                <i class='bx bx-slideshow'></i>
+                <span class="links_name">Classes</span>
+            </a>
+            <span class="tooltip">Classes</span>
+        </li>
+        <!-- <li>
+            <a href="#">
+                <i class='bx bxs-cog'></i>
+                <span class="links_name">Setting</span>
+            </a>
+            <span class="tooltip">Setting</span>
+        </li> -->
+        <% if(user.googleToken) { %>
+            <li>
+                <a href="<%= google %>">
+                    <i class='bx bxl-google' style="color: green;"></i>
+                    <span class="links_name" style="color: green;">Google &#10003;</span>
+                </a>
+                <span class="tooltip" style="color: green;">Google &#10003;</span>
+            </li>
+        <% } else { %>
+            <li>
+                <a href="<%= google %>">
+                    <i class='bx bxl-google' style="color: red;"></i>
+                    <span class="links_name" style="color: red;">Google &#10060;</span>
+                </a>
+                <span class="tooltip" style="color: red;">Google &#10060;</span>
+            </li>
+        <% } %>
+
+        <% if(user.webexToken) { %>
+            <li>
+                <a href="<%= webex %>">
+                    <i class='bx bxs-webcam' style="color: green;"></i>
+                    <span class="links_name" style="color: green;">Webex &#10003;</span>
+                </a>
+                <span class="tooltip" style="color: green;">Webex &#10003;</span>
+            </li>
+        <% } else { %>
+            <li>
+                <a href="<%= webex %>">
+                    <i class='bx bxs-webcam' style="color: red;"></i>
+                    <span class="links_name" style="color: red;">Webex &#10060;</span>
+                </a>
+                <span class="tooltip" style="color: red;">Webex &#10060;</span>
+            </li>
+        <% } %>
+        
+        <li class="profile">
+            <div class="profile-details">
+                <img src="/profile.png" alt="profileImg">
+                <div class="name_job">
+                    <div class="name"><%= user.name %></div>
+                    <div class="job">Teacher</div>
+                </div>
+            </div>
+            <a href="/logout"><i class='bx bx-log-out' id="log_out"></i></a>
+        </li>
+    </ul>
+</div>

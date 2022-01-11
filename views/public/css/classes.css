@@ -1,0 +1,218 @@
+main {
+    padding: 50px;
+}
+
+.add {
+    background-color: rgba(128, 128, 128, 0.479);
+    color: rgb(12, 12, 12);
+    border-radius: 10px;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    padding-bottom: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    transition: 0.25s ease-out;
+}
+
+.add:hover {
+    background-color: rgb(147, 224, 255);
+}
+
+#myBtn {
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    margin-top: 30px;
+}
+
+.classess div:nth-child(1){
+    font-size: 1.3rem;
+}
+
+.flex-container>div{
+    margin-right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.349);
+}
+
+.flex-container>div {
+    background-color: #6be275;
+}
+
+.flex-container>div:nth-child(2n) {
+    background-color: #ff9a9a;
+}
+
+.flex-container>div:nth-child(4n) {
+    background-color: #ffd39a;
+}
+
+.flex-container>div:nth-child(3n) {
+    background-color: #97a1ff;
+}
+
+.classess {
+    height: 100px;
+    width: 200px;
+    filter: brightness(90%);
+    transition: 0.2s ease-in;
+}
+
+.classess:hover{
+    filter: brightness(100%)
+}
+
+.classess a{
+    text-decoration: none;
+    color: rgb(43, 43, 43);
+}
+
+.add>div {
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 80px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    background-color: rgb(236, 236, 236);
+    background-image: url('/class.jpg');
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.classForm {
+    margin: 20px;
+    text-align: center;
+}
+
+.classForm div label {
+    display: block;
+    font-size: 15px;
+}
+
+.classForm div input {
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 2px rgb(78, 78, 78);
+    margin-bottom: 5px;
+    width: 300px;
+}
+
+.classForm div input:focus {
+    border: solid 2px rgb(33, 131, 50);
+    background: rgb(255, 254, 209);
+}
+
+.classForm div button {
+    padding: 5px;
+    background-color: #5cb85c;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    transition: .25s;
+}
+
+.classForm div button:hover {
+    background-color: #366d36;
+    cursor: pointer;
+}

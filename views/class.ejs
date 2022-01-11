@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Classes</title>
+
+    <link rel="stylesheet" href="/css/mycss.css">
+    <link rel="stylesheet" href="/css/class.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.css">
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+    <section class="home-section">
+        <%- include('./partials/notify') %>
+        <div class="text"><%= name %></div>
+        <div class="section"><%= section %></div>
+        <main>
+            <hr class="m-3">
+            <div class="container-fluid">
+                <div class="row info">
+                    <div class="col-6">
+                        <div class="row">
+                            <% if(discription_head){ %>
+                            <div class="col-12">
+                                Heading
+                            </div>
+                            <div class="col-12 mb-4">
+                                <%= discription_head %>
+                            </div>
+                            <% } %>
+                            <% if(discription_head){ %>
+                            <div class="col-12">
+                                discription
+                            </div>
+                            <div class="col-12">
+                                <%= discription %>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12">Classroom Code</div>
+                            <div class="col-12 mb-4"><%= class_code %></div>
+                            <div class="col-12">Classroom Link</div>
+                            <div class="col-12"><a href="<%= link %>" target="_blank"><%= link.substring(0,30) %>........</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="m-3">
+
+            <div class="continer-fluid">
+                <div class="row">
+                    <h1 class="text-center">
+                            Time Table
+                    </h1>
+                    <div class="col-3"></div>
+                    <div class="col-6 days">
+                        <div class="row">
+                            <div class="col-12">Monday</div>
+                            <div class="col-12 add" id="mon">
+                                <input type="time" class="child"><button onclick="addClass('mon', this)">+</button>
+                                <% timetable[0].forEach(tt => { %>
+                                    <div class = "mon" id="id<%= tt.id %>"><%= tt.start_time.substring(0,4) %><button id="del" onclick="removeClass('id<%= tt.id %>')">❌</button></div>
+                                <% }) %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">Tuesday</div>
+                            <div class="col-12 add" id="tue">
+                                <input type="time" class="child"><button onclick="addClass('tue', this)">+</button>
+                                <% timetable[1].forEach(tt => { %>
+                                    <div class = "mon" id="id<%= tt.id %>"><%= tt.start_time.substring(0,4) %><button id="del" onclick="removeClass('id<%= tt.id %>')">❌</button></div>
+                                <% }) %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">Wednesday</div>
+                            <div class="col-12 add" id="wed">
+                                <input type="time" class="child"><button onclick="addClass('wed', this)">+</button>
+                                <% timetable[2].forEach(tt => { %>
+                                    <div class = "mon" id="id<%= tt.id %>"><%= tt.start_time.substring(0,4) %><button id="del" onclick="removeClass('id<%= tt.id %>')">❌</button></div>
+                                <% }) %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">Thrusday</div>
+                            <div class="col-12 add" id="thu">
+                                <input type="time" class="child"><button onclick="addClass('thu', this)">+</button>
+                                <% timetable[3].forEach(tt => { %>
+                                    <div class = "mon" id="id<%= tt.id %>"><%= tt.start_time.substring(0,4) %><button id="del" onclick="removeClass('id<%= tt.id %>')">❌</button></div>
+                                <% }) %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">Friday</div>
+                            <div class="col-12 add" id="fri">
+                                <input type="time" class="child"><button onclick="addClass('fri', this)">+</button>
+                                <% timetable[4].forEach(tt => { %>
+                                    <div class = "mon" id="id<%= tt.id %>"><%= tt.start_time.substring(0,4) %><button id="del" onclick="removeClass('id<%= tt.id %>')">❌</button></div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+
+        </main>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const addClass = (day, button) => {
+            const div = document.getElementById(day)
+            const input = div.querySelectorAll('.child')[0]
+
+            console.log('doing1')
+            if(!input.value || input.value == ""){
+                console.log(input.value)
+                return
+            }
+
+            button.disabled = true
+            console.log('doing')
+
+            axios({
+                method: 'post',
+                url: '/addClass/<%= id %>',
+                data: {
+                    time: input.value,
+                    day: day
+                },
+                withCredentials: true
+            }).then(res => {
+                button.disabled = false
+                console.log(res)
+                if(res.data.error){
+                    console.log(res.data.red)
+                    window.location.href = ("https://localhost:3000" + res.data.red)
+                    return
+                }
+
+                div.insertAdjacentHTML('beforeend',`<div class = "${day}" id="id${res.data.id}">${input.value}<button id="del" onclick="removeClass('id${res.data.id}')">❌</button></div>`);
+                input.value = ""
+            }).catch(error => {
+                button.disabled = false
+                console.log(error.response)
+            })
+        }
+
+        const removeClass = (id) => {
+            const div = document.getElementById(id)
+
+            axios({
+                method: 'post',
+                url: '/removeClass/' + id.replace('id', ''),
+                withCredentials: true
+            }).then(res => {
+                console.log(res)
+                if(res.data.error){
+                    console.log(res.data.red)
+                    window.location.href = ("https://localhost:3000" + res.data.red)
+                    return
+                }
+
+                div.style.display = 'none'
+                input.value = ""
+            }).catch(error => {
+                console.log(error.response)
+            })
+        }
+    </script>
+    <script src="/js/myjs.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>
